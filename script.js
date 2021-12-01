@@ -2,6 +2,7 @@ const dropArea = document.querySelector(".drag");
 const dragText = document.querySelector("#dragText");
 let file; //global variable
 let fileURL;
+let hasImage = false;
 //add dragover event listener and prevent default event
 //add triggered class
 dropArea.addEventListener("dragover", (event) => {
@@ -32,15 +33,16 @@ const showFile = () => {
   //filter the accepted files
   let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
   if (validExtensions.includes(fileType)) {
+    hasImage = true;
     let fileReader = new FileReader();
     fileReader.onload = () => {
       fileURL = fileReader.result;
       let imageTag = `<img src="${fileURL}" alt="image">`; //show the image
       dropArea.innerHTML = imageTag;
-      document.querySelector(".btn-generate").classList.add("ready");
     };
     fileReader.readAsDataURL(file);
   } else {
+    hasImage = false;
     alert(" Only image files (.jpeg .png .jpg) can be accepted!");
     dropArea.classList.remove("triggered");
     dragText.innerHTML =
@@ -67,11 +69,19 @@ btnGenerate.onclick = () => {
   const texts = document.querySelector("#texts").value;
   const repeat = document.querySelector("#repeat").value;
   const text = document.querySelector("#text");
+
+  if (!hasImage) {
+    alert("Upload an image to generate.");
+  } else if (texts.length == 0) {
+    alert("There are no texts detected! Please add some texts.");
+  } else if (repeat.length == 0) {
+    alert("Provide a number for the no. of repeats.");
+  } else {
+    document.querySelector("#hidden-btn").click();
+  }
+
   text.style.backgroundImage = `url('${fileURL}')`;
   for (i = 1; i <= repeat; i++) {
     text.append(texts);
   }
 };
-// btnGenerate.focus = () => {
-//   btnGenerate.classList.add("clicked");
-// };

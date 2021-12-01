@@ -25,7 +25,7 @@
 body {
   font-family: "Work Sans", sans-serif;
   font-size: 16pt;
-  background: hsl(225, 8%, 10%);
+  background: hsl(0, 0%, 0%);
 }
 /* specifics */
 .landing-page {
@@ -33,6 +33,7 @@ body {
   align-items: flex-start;
   justify-content: center;
   height: 90vh;
+  background: hsl(240, 6%, 6%);
 }
 /* the main box */
 .box {
@@ -197,13 +198,19 @@ label[for="texts"] {
 }
 /* this is the nextpage/ where the photo with fill text will be generated */
 .output-page {
-  min-height: 100vh;
+  height: 100vh;
+
   width: 100%;
   background: black;
 }
+.output-page h3 {
+  text-align: center;
+}
 /* canvas area where the photo with fill text will be generated */
 .canvas {
+  overflow: hidden;
   width: 80%;
+  height: 85%;
   margin: 20px auto;
   color: white;
 }
@@ -215,11 +222,11 @@ label[for="texts"] {
   background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
   -webkit-background-clip: text;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   line-height: 0.8;
   max-height: 100vh;
   word-break: break-all;
-  font-family: Poppins;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: white;
 }
