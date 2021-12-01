@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+:root {
+  --gradient-bg: linear-gradient(
+    50deg,
+    rgb(234, 0, 255),
+    rgb(153, 0, 255),
+    rgb(0, 89, 255),
+    rgb(129, 168, 253)
+  );
+  --text-gradient: linear-gradient(
+    50deg,
+    rgb(244, 126, 255),
+    rgb(209, 140, 255),
+    rgb(118, 166, 255),
+    rgb(129, 168, 253)
+  );
+}
+/* reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Work Sans", sans-serif;
+  font-size: 16pt;
+  background: hsl(225, 8%, 10%);
+}
+/* specifics */
+.landing-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 90vh;
+}
+/* the main box */
+.box {
+  margin: 40px 10px 0px 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 700px;
+  min-width: 200px;
+  min-height: 350px;
+  color: hsl(224, 60%, 95%);
+  border-radius: 8px;
+  background: hsl(225, 8%, 20%);
+}
+/* add gradient bg to h3 */
+h3 {
+  margin: 20px 0;
+  background-image: var(--text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+/* drag area */
+.drag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  min-width: 300px;
+  max-width: 600px;
+  border: 1px dashed hsl(225, 8%, 40%);
+  border-radius: 5px;
+}
+/* style when drag area is triggerd/dragover event */
+.triggered {
+  background: hsl(225, 28%, 40%);
+}
+/* all elements in drag area */
+.drag > * {
+  margin: 10px 0;
+}
+.drag > p {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: hsl(225, 8%, 60%);
+}
+.drag img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 0;
+}
+/* button upload */
+.btn-upload {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: hsl(224, 60%, 95%);
+}
+#texts {
+  outline: none;
+  resize: none;
+  overflow: auto;
+  padding: 5px;
+  background: hsl(225, 8%, 30%);
+  color: hsl(224, 60%, 95%);
+  margin-top: 10px;
+}
+#repeat {
+  outline: none;
+  width: 50px;
+  background: hsl(225, 8%, 30%);
+  padding: 4px 2px;
+  border: none;
+  color: hsl(224, 60%, 95%);
+}
+label[for="repeat"] {
+  font-size: 0.8rem;
+}
+/* generate button add gradient background image */
+.btn-generate {
+  margin: 20px 0;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: hsl(224, 60%, 95%);
+  background-image: var(--gradient-bg);
+  background-size: 300%;
+  transition: background-position 0.3s linear, opacity 0.3s linear;
+
+  background-position: left;
+  border-radius: 50px;
+
+  -moz-transition: background-position 0.3s cubic-bezier(0.14, 0.46, 0.7, 0.93); /* Firefox 4 */
+  -webkit-transition: background-position 0.3s
+    cubic-bezier(0.14, 0.46, 0.7, 0.93); /* Safari and Chrome */
+  -o-transition: background-position 0.3s cubic-bezier(0.14, 0.46, 0.7, 0.93); /* Opera */
+  -ms-transition: background-position 0.3s cubic-bezier(0.14, 0.46, 0.7, 0.93); /* Explorer 10 */
+  /* border: 2px solid hsl(219, 100%, 50%); */
+}
+.clicked {
+  opacity: 0.7;
+}
+/* add moving effect to bg of generate button */
+.btn-generate:hover {
+  background-position: right;
+}
+/* add a glowing/breathe style if an image is successfully uploaded */
+.ready {
+  animation: breathe 1.3s infinite;
+}
+/* breathe/glowing effect animation for button generate */
+@keyframes breathe {
+  0% {
+    box-shadow: 2px 2px 13px 2px rgba(44, 192, 255, 0.48);
+    -webkit-box-shadow: 2px 2px 13px 2px rgba(44, 192, 255, 0.48);
+    -moz-box-shadow: 2px 2px 13px 2px rgba(44, 192, 255, 0.48);
+  }
+  50% {
+    box-shadow: 2px 2px 29px 2px rgba(44, 192, 255, 0.55);
+    -webkit-box-shadow: 2px 2px 29px 2px rgba(44, 192, 255, 0.55);
+    -moz-box-shadow: 2px 2px 29px 2px rgba(44, 192, 255, 0.55);
+  }
+
+  100% {
+    box-shadow: 2px 2px 13px 2px rgba(44, 192, 255, 0.48);
+    -webkit-box-shadow: 2px 2px 13px 2px rgba(44, 192, 255, 0.48);
+    -moz-box-shadow: 2px 2px 13px 2px rgba(44, 192, 255, 0.48);
+  }
+}
+/* this is the nextpage/ where the photo with fill text will be generated */
+.output-page {
+  min-height: 100vh;
+  width: 100%;
+  background: black;
+}
+/* canvas area where the photo with fill text will be generated */
+.canvas {
+  width: 80%;
+  margin: 20px auto;
+  color: white;
+}
+#text {
+  background-image: url(https://pyxis.nymag.com/v1/imgs/44d/557/29a8e3520a8c88dd301a755cfb84d51d72-30-taylor-swift-2.rsquare.w700.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+  -webkit-background-clip: text;
+  font-size: 0.8rem;
+  line-height: 0.8;
+  max-height: 100vh;
+  word-break: break-all;
+  font-family: poppins;
+  font-weight: bold;
+}
