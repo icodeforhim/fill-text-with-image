@@ -1,7 +1,7 @@
 const dropArea = document.querySelector(".drag");
 const dragText = document.querySelector("#dragText");
 let file; //global variable
-
+let fileURL;
 //add dragover event listener and prevent default event
 //add triggered class
 dropArea.addEventListener("dragover", (event) => {
@@ -34,7 +34,7 @@ const showFile = () => {
   if (validExtensions.includes(fileType)) {
     let fileReader = new FileReader();
     fileReader.onload = () => {
-      let fileURL = fileReader.result;
+      fileURL = fileReader.result;
       let imageTag = `<img src="${fileURL}" alt="image">`; //show the image
       dropArea.innerHTML = imageTag;
       document.querySelector(".btn-generate").classList.add("ready");
@@ -60,13 +60,17 @@ input.addEventListener("change", function () {
   dropArea.classList.add("active");
   showFile(); //calling function
 });
+
+//generate
 const btnGenerate = document.querySelector(".btn-generate");
 btnGenerate.onclick = () => {
   const texts = document.querySelector("#texts").value;
   const repeat = document.querySelector("#repeat").value;
   const text = document.querySelector("#text");
-
-  text.append(texts);
+  text.style.backgroundImage = `url('${fileURL}')`;
+  for (i = 1; i <= repeat; i++) {
+    text.append(texts);
+  }
 };
 // btnGenerate.focus = () => {
 //   btnGenerate.classList.add("clicked");

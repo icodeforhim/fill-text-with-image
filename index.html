@@ -10,7 +10,7 @@
   <body>
     <section class="landing-page">
       <div class="box">
-        <h3>Image - Text Generator</h3>
+        <h2>Image - Text Generator</h2>
         <!-- drag and drop area -->
         <div class="drag">
           <p id="dragText">Drag & Drop to upload file <br />or</p>
@@ -24,19 +24,23 @@
           />
         </div>
         <!-- end of drag and drop area -->
-        <textarea
-          id="texts"
-          name="texts"
-          rows="6"
-          cols="50"
-          placeholder="Enter your text here..."
-        >
-Enter your text here...
-        </textarea>
-        <div class="repeat">
-          <label for="repeat">Repeat:</label>
-          <input type="number" min="1" name="" id="repeat" />
+        <div class="texts">
+          <div class="inline">
+            <label for="texts">Enter text below:</label>
+            <div class="repeat">
+              <label for="repeat">Repeat:</label>
+              <input
+                type="number"
+                placeholder="1"
+                min="1"
+                name=""
+                id="repeat"
+              />
+            </div>
+          </div>
+          <textarea id="texts" name="texts" rows="6" cols="50"> </textarea>
         </div>
+
         <button class="btn-generate">Generate</button>
       </div>
     </section>
@@ -44,7 +48,7 @@ Enter your text here...
     <section class="output-page">
       <h3>Output</h3>
       <div class="canvas">
-        <p id="text"></p>
+        <p id="text">asdfghjkl</p>
       </div>
     </section>
   </body>

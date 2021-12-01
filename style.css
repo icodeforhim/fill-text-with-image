@@ -48,7 +48,10 @@ body {
   background: hsl(225, 8%, 20%);
 }
 /* add gradient bg to h3 */
-h3 {
+h1,
+h2,
+h3,
+h4 {
   margin: 20px 0;
   background-image: var(--text-gradient);
   background-clip: text;
@@ -105,7 +108,8 @@ h3 {
   padding: 5px;
   background: hsl(225, 8%, 30%);
   color: hsl(224, 60%, 95%);
-  margin-top: 10px;
+  width: 300px;
+  border: 1px solid hsl(225, 8%, 30%);
 }
 #repeat {
   outline: none;
@@ -118,6 +122,29 @@ h3 {
 label[for="repeat"] {
   font-size: 0.8rem;
 }
+.texts {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.repeat {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+label[for="texts"] {
+  align-self: flex-start;
+  font-size: 0.8rem;
+}
+.inline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+}
 /* generate button add gradient background image */
 .btn-generate {
   margin: 20px 0;
@@ -129,10 +156,8 @@ label[for="repeat"] {
   background-image: var(--gradient-bg);
   background-size: 300%;
   transition: background-position 0.3s linear, opacity 0.3s linear;
-
   background-position: left;
   border-radius: 50px;
-
   -moz-transition: background-position 0.3s cubic-bezier(0.14, 0.46, 0.7, 0.93); /* Firefox 4 */
   -webkit-transition: background-position 0.3s
     cubic-bezier(0.14, 0.46, 0.7, 0.93); /* Safari and Chrome */
@@ -182,8 +207,8 @@ label[for="repeat"] {
   margin: 20px auto;
   color: white;
 }
+/* fill text image */
 #text {
-  background-image: url(https://pyxis.nymag.com/v1/imgs/44d/557/29a8e3520a8c88dd301a755cfb84d51d72-30-taylor-swift-2.rsquare.w700.jpg);
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain;
@@ -194,6 +219,17 @@ label[for="repeat"] {
   line-height: 0.8;
   max-height: 100vh;
   word-break: break-all;
-  font-family: poppins;
+  font-family: Poppins;
   font-weight: bold;
+  color: white;
+}
+
+/* media queries */
+@media (max-width: 376px) {
+  .landing-page {
+    height: 70vh;
+  }
+  .box {
+    margin-top: 10px;
+  }
 }
